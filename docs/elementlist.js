@@ -1,0 +1,3 @@
+
+var ApiGen = ApiGen || {};
+ApiGen.elements = [["c","Fungku\\HubSpot\\Api\\Api"],["c","Fungku\\HubSpot\\Api\\BlogPosts"],["c","Fungku\\HubSpot\\Api\\Blogs"],["c","Fungku\\HubSpot\\Api\\ContactLists"],["c","Fungku\\HubSpot\\Api\\ContactProperties"],["c","Fungku\\HubSpot\\Api\\Contacts"],["c","Fungku\\HubSpot\\Api\\Email"],["c","Fungku\\HubSpot\\Api\\EmailEvents"],["c","Fungku\\HubSpot\\Api\\Files"],["c","Fungku\\HubSpot\\Api\\Forms"],["c","Fungku\\HubSpot\\Api\\Keywords"],["c","Fungku\\HubSpot\\Api\\MarketPlace"],["c","Fungku\\HubSpot\\Api\\Pages"],["c","Fungku\\HubSpot\\Api\\SocialMedia"],["c","Fungku\\HubSpot\\Api\\Workflows"]];
