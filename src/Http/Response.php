@@ -33,7 +33,11 @@ class Response implements ResponseInterface, ArrayAccess
      */
     private function getDataFromResponse($response)
     {
-        return $response->json(['object' => true]);
+        try {
+            return $response->json(['object' => true]);
+        } catch (\GuzzleHttp\Exception\ParseException $e) {
+            return null;
+        }
     }
 
     /**
