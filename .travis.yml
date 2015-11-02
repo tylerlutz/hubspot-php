@@ -11,6 +11,10 @@ before_script:
 
 script: vendor/bin/phpspec run
 
+branches:
+  except:
+    - php53
+
 # Use Travis' new container-based infrastructure.
 # See http://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo: false
