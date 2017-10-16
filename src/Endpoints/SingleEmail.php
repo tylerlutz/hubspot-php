@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class SingleEmail extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class SingleEmail extends Endpoint
 {
     /**
      * Send an email designed and maintained in the HubSpot marketing Email Tool.

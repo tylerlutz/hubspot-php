@@ -1,9 +1,11 @@
 <?php
-namespace SevenShores\Hubspot\Resources;
 
+namespace SevenShores\Hubspot\Endpoints;
+
+use SevenShores\Hubspot\Endpoint;
 use SevenShores\Hubspot\Exceptions\HubspotException;
 
-class Deals extends Resource
+final class Deals extends Endpoint
 {
     /**
      * @param array $deal Array of deal properties.
@@ -39,7 +41,8 @@ class Deals extends Resource
      * @return \Psr\Http\Message\ResponseInterface|\SevenShores\Hubspot\Http\Response
      * @throws \SevenShores\Hubspot\Exceptions\BadRequest
      */
-    function getAll(array $params = []){
+    function getAll(array $params = [])
+    {
         $endpoint = "https://api.hubapi.com/deals/v1/deal/paged";
 
         $queryString = build_query_string($params);
@@ -135,7 +138,7 @@ class Deals extends Resource
 
         return $this->client->request('put', $endpoint, [], $queryString);
     }
-    
+
     /**
      * @param int $contactId
      * @param array $params Optional parameters ['limit', 'offset']

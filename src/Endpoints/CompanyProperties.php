@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class CompanyProperties extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class CompanyProperties extends Endpoint
 {
     /**
      * Creates a property on every company object to store a specific piece of data.

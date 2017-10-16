@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class CalendarEvents extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class CalendarEvents extends Endpoint
 {
     /**
      * @param array $properties

@@ -1,8 +1,8 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot;
 
-abstract class Resource
+abstract class Endpoint
 {
     /**
      * @var \SevenShores\Hubspot\Http\Client

@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Email extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Email extends Endpoint
 {
     /**
      * Get email subscription types for a portal.

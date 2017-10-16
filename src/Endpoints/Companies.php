@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Companies extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Companies extends Endpoint
 {
 
     /**

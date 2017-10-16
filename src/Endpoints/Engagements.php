@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Engagements extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Engagements extends Endpoint
 {
     /**
      * @param array $engagement Array of engagement engagement.
@@ -24,7 +26,7 @@ class Engagements extends Resource
 
         return $this->client->request('post', $endpoint, $options);
     }
-    
+
     /**
      * Returns all recently created or updated engagements.
      *
@@ -113,7 +115,7 @@ class Engagements extends Resource
 
         return $this->client->request('put', $endpoint);
     }
-    
+
     /**
      * @param string $object_type
      * @param int $object_id

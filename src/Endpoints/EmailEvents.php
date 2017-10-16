@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class EmailEvents extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class EmailEvents extends Endpoint
 {
     /**
      * Get campaign IDs for a portal.

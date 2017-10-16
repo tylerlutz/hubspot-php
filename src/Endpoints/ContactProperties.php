@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class ContactProperties extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class ContactProperties extends Endpoint
 {
     /**
      * Get all Contact properties.

@@ -7,33 +7,33 @@ use SevenShores\Hubspot\Http\Client;
 /**
  * Class Factory
  *
- * @method \SevenShores\Hubspot\Resources\BlogAuthors blogAuthors()
- * @method \SevenShores\Hubspot\Resources\Blogs blogs()
- * @method \SevenShores\Hubspot\Resources\BlogPosts blogPosts()
- * @method \SevenShores\Hubspot\Resources\BlogTopics blogTopics()
- * @method \SevenShores\Hubspot\Resources\Companies companies()
- * @method \SevenShores\Hubspot\Resources\CompanyProperties companyProperties()
- * @method \SevenShores\Hubspot\Resources\CalendarEvents calendarEvents()
- * @method \SevenShores\Hubspot\Resources\ContactLists contactLists()
- * @method \SevenShores\Hubspot\Resources\ContactProperties contactProperties()
- * @method \SevenShores\Hubspot\Resources\Contacts contacts()
- * @method \SevenShores\Hubspot\Resources\Email email()
- * @method \SevenShores\Hubspot\Resources\EmailEvents emailEvents()
- * @method \SevenShores\Hubspot\Resources\Engagements engagements()
- * @method \SevenShores\Hubspot\Resources\Files files()
- * @method \SevenShores\Hubspot\Resources\Forms forms()
- * @method \SevenShores\Hubspot\Resources\HubDB hubDB()
- * @method \SevenShores\Hubspot\Resources\Keywords keywords()
- * @method \SevenShores\Hubspot\Resources\Pages pages()
- * @method \SevenShores\Hubspot\Resources\SocialMedia socialMedia()
- * @method \SevenShores\Hubspot\Resources\Timeline timeline()
- * @method \SevenShores\Hubspot\Resources\Workflows workflows()
- * @method \SevenShores\Hubspot\Resources\Events events()
- * @method \SevenShores\Hubspot\Resources\DealPipelines dealPipelines()
- * @method \SevenShores\Hubspot\Resources\DealProperties dealProperties()
- * @method \SevenShores\Hubspot\Resources\Deals deals()
- * @method \SevenShores\Hubspot\Resources\Owners owners()
- * @method \SevenShores\Hubspot\Resources\SingleEmail singleEmail()
+ * @method \SevenShores\Hubspot\Endpoints\BlogAuthors blogAuthors()
+ * @method \SevenShores\Hubspot\Endpoints\Blogs blogs()
+ * @method \SevenShores\Hubspot\Endpoints\BlogPosts blogPosts()
+ * @method \SevenShores\Hubspot\Endpoints\BlogTopics blogTopics()
+ * @method \SevenShores\Hubspot\Endpoints\Companies companies()
+ * @method \SevenShores\Hubspot\Endpoints\CompanyProperties companyProperties()
+ * @method \SevenShores\Hubspot\Endpoints\CalendarEvents calendarEvents()
+ * @method \SevenShores\Hubspot\Endpoints\ContactLists contactLists()
+ * @method \SevenShores\Hubspot\Endpoints\ContactProperties contactProperties()
+ * @method \SevenShores\Hubspot\Endpoints\Contacts contacts()
+ * @method \SevenShores\Hubspot\Endpoints\Email email()
+ * @method \SevenShores\Hubspot\Endpoints\EmailEvents emailEvents()
+ * @method \SevenShores\Hubspot\Endpoints\Engagements engagements()
+ * @method \SevenShores\Hubspot\Endpoints\Files files()
+ * @method \SevenShores\Hubspot\Endpoints\Forms forms()
+ * @method \SevenShores\Hubspot\Endpoints\HubDB hubDB()
+ * @method \SevenShores\Hubspot\Endpoints\Keywords keywords()
+ * @method \SevenShores\Hubspot\Endpoints\Pages pages()
+ * @method \SevenShores\Hubspot\Endpoints\SocialMedia socialMedia()
+ * @method \SevenShores\Hubspot\Endpoints\Timeline timeline()
+ * @method \SevenShores\Hubspot\Endpoints\Workflows workflows()
+ * @method \SevenShores\Hubspot\Endpoints\Events events()
+ * @method \SevenShores\Hubspot\Endpoints\DealPipelines dealPipelines()
+ * @method \SevenShores\Hubspot\Endpoints\DealProperties dealProperties()
+ * @method \SevenShores\Hubspot\Endpoints\Deals deals()
+ * @method \SevenShores\Hubspot\Endpoints\Owners owners()
+ * @method \SevenShores\Hubspot\Endpoints\SingleEmail singleEmail()
  */
 class Factory
 {
@@ -83,11 +83,11 @@ class Factory
      *
      * @param  string  $name
      * @param  array   $arguments
-     * @return \SevenShores\Hubspot\Resources\Resource
+     * @return \SevenShores\Hubspot\Endpoints\Endpoint
      */
     function __call($name, $arguments = null)
     {
-        $resource = 'SevenShores\\Hubspot\\Resources\\' . ucfirst($name);
+        $resource = 'SevenShores\\SevenShores\Hubspot\\Endpoints\\' . ucfirst($name);
 
         return new $resource($this->client);
     }

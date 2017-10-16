@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class HubDB extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class HubDB extends Endpoint
 {
     /**
      * Get all tables

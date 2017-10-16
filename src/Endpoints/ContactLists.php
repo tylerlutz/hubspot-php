@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class ContactLists extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class ContactLists extends Endpoint
 {
     /**
      * Create a new contact list.

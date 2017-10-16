@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Forms extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Forms extends Endpoint
 {
     /**
      * Submit data to a form.

@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Workflows extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Workflows extends Endpoint
 {
     /**
      * Get all workflows.

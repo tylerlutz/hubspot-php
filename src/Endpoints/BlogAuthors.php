@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class BlogAuthors extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class BlogAuthors extends Endpoint
 {
     /**
      * Create a new blog author.

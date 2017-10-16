@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Pages extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Pages extends Endpoint
 {
     /**
      * Create a new page.

@@ -1,9 +1,11 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
 
-class Contacts extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Contacts extends Endpoint
 {
     /**
      * @param array $properties Array of contact properties.
@@ -109,9 +111,25 @@ class Contacts extends Resource
     }
 
     /**
-     * For a given portal, return all contacts that have been recently updated or created.
-     * A paginated list of contacts will be returned to you, with a maximum of 100 contacts per page, as specified by
-     * the "count" parameter. The endpoint only scrolls back in time 30 days.
+     * Get recently updated and created contacts.
+     *
+     * For a given portal, return all contacts that have been recently updated
+     * or created.
+     *
+     * A paginated list of contacts will be returned to you, with a maximum of
+     * 100 contacts per page, as specified by the "count" parameter. The
+     * endpoint only scrolls back in time 30 days.
+     *
+     * Please Note:
+     * There are 3 fields here to pay close attention to:
+     * the "has-more" field that will let you know whether there are more
+     * contacts that you can pull from this portal, and the "vid-offset" and
+     * "time-offset" fields which will let you know where you are in the list
+     * of contacts. You can then use the "vid-offset" and "time-offset" fields
+     * in the "vidOffset" and "timeOffset" parameters described below.
+     *
+     * The response is sorted in descending order by last modified date; the
+     * most recently modified record is returned first.
      *
      * @see http://developers.hubspot.com/docs/methods/contacts/get_recently_updated_contacts
      *
@@ -129,6 +147,53 @@ class Contacts extends Resource
     }
 
     /**
+     * Get recently created contacts.
+     *
+     * For a given portal, return all contacts that have been recently created.
+     *
+     * A paginated list of contacts will be returned to you, with a maximum of 100
+     * contacts per page, as specified by the "count" parameter.
+     *
+     * Please Note:
+     * There are 3 fields here to pay close attention to:
+     * the "has-more" field that will let you know whether there are more
+     * contacts that you can pull from this portal, and the "vid-offset" and
+     * "time-offset" fields which will let you know where you are in the list
+     * of contacts. You can then use the "vid-offset" and "time-offset" fields
+     * in the "vidOffset" and "timeOffset" parameters described below.
+     *
+     * The response is sorted in descending order by create date; the most
+     * recently created contact is returned first.
+     *
+     * @see https://developers.hubspot.com/docs/methods/contacts/get_recently_created_contacts
+     *
+     * @param array $params Array of optional parameters ['count', 'timeOffset', 'vidOffset', 'property',
+     *                      'propertyMode', 'formSubmissionMode', 'showListMemberships']
+     * @return \SevenShores\Hubspot\Http\Response
+     */
+    function recentCreated($params = [])
+    {
+        $endpoint = "https://api.hubapi.com/contacts/v1/lists/all/contacts/recent";
+
+        $queryString = build_query_string($params);
+
+        return $this->client->request('get', $endpoint, [], $queryString);
+    }
+
+    /**
+     * Get a contact record by its vid.
+     *
+     * For a given portal, return information about a single contact by its ID.
+     * The contact's unique ID is stored in a field called 'vid' which stands
+     * for 'visitor ID'.
+     *
+     * This method will also return you much of the HubSpot lead "intelligence"
+     * that you may be accustomed to getting from the leads API, as properties
+     * in this new API. More of this intelligence will be available as time
+     * passes, but this call is where you can expect to find it.
+     *
+     * @see https://developers.hubspot.com/docs/methods/contacts/get_contact
+     *
      * @param int $id
      * @param array $params Array of optional parameters ['property', 'propertyMode', 'formSubmissionMode',
      *                      'showListMemberships']
@@ -144,11 +209,19 @@ class Contacts extends Resource
     }
 
     /**
-     * For a given portal, return information about a group of contacts by their unique ID's. A contact's unique ID's
-     * is stored in a field called 'vid' which stands for 'visitor ID'.
+     * Get a batch of contacts by vid.
      *
-     * This method will also return you much of the HubSpot lead "intelligence" for each requested contact record. The
-     * endpoint accepts many query parameters that allow for customization based on a variety of integration use cases.
+     * For a given portal, return information about a group of contacts by
+     * their unique ID's. A contact's unique ID's is stored in a field called
+     * 'vid' which stands for 'visitor ID'.
+     *
+     * The endpoint accepts many query parameters that allow for customization
+     * based on a variety of integration use cases. By default, this endpoint
+     * will not return the history for properties, only the current value of
+     * any populated properties, but you can include the history using the
+     * parameters listed below.
+     *
+     * Requests should be limited to 100 records in a single request.
      *
      * @see http://developers.hubspot.com/docs/methods/contacts/get_batch_by_vid
      *
@@ -169,9 +242,19 @@ class Contacts extends Resource
     }
 
     /**
+     * Search for a contact by email address.
+     *
+     * For a given portal, return information about a single contact by its email
+     * address.
+     *
+     * Since all contacts in HubSpot are de-duplicated off of an email address,
+     * you will only ever receive a single contact back from the API.
+     *
+     * @see https://developers.hubspot.com/docs/methods/contacts/get_contact_by_email
+     *
      * @param string $email
-     * @param array $params Array of optional parameters ['property', 'propertyMode', 'formSubmissionMode',
-     *                      'showListMemberships']
+     * @param array $params Array of optional parameters ['property', 'propertyMode',
+     *                      'formSubmissionMode', 'showListMemberships']
      * @return \SevenShores\Hubspot\Http\Response
      */
     function getByEmail($email, $params = [])

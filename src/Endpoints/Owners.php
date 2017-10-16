@@ -1,12 +1,14 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
+
+use SevenShores\Hubspot\Endpoint;
 
 /**
  * Class Owners
- * @package SevenShores\Hubspot\Resources
+ * @package SevenShores\Hubspot\Endpoints
  */
-class Owners extends Resource
+final class Owners extends Endpoint
 {
     /**
      * @param array $properties

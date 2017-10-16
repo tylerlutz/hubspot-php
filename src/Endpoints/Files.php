@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Files extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Files extends Endpoint
 {
     /**
      * Upload a new file.

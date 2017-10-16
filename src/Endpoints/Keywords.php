@@ -1,8 +1,10 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Keywords extends Resource
+use SevenShores\Hubspot\Endpoint;
+
+final class Keywords extends Endpoint
 {
     /**
      * Get all keywords.

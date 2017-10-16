@@ -1,11 +1,16 @@
 <?php
 
-namespace SevenShores\Hubspot\Resources;
+namespace SevenShores\Hubspot\Endpoints;
 
-class Timeline extends Resource
+use SevenShores\Hubspot\Endpoint;
+use SevenShores\Hubspot\Exceptions\InvalidArgument;
+
+final class Timeline extends Endpoint
 {
     /**
      * Create or Update Timeline Event
+     *
+     * @see http://developers.hubspot.com/docs/methods/timeline/create-or-update-event
      *
      * @param int         $appId
      * @param int         $eventTypeId
@@ -17,32 +22,27 @@ class Timeline extends Resource
      * @param mixed       $timestamp
      * @param array       $eventTypeData
      *
-     * @return mixed
+     * @return \SevenShores\Hubspot\Http\Response
      *
-     * @see http://developers.hubspot.com/docs/methods/timeline/create-or-update-event
+     * @throws InvalidArgument
      */
     public function createOrUpdate(
         $appId,
-        $eventTypeId,
         $id,
-        $objectId = null,
-        $email = null,
-        $utk = null,
-        $extraData = [],
-        $timestamp = null,
-        $eventTypeData = []
+        $eventTypeId,
+        $identityParams = [],
+        $params = []
     ) {
+        if (! count($identityParams) > 0) {
+            throw new InvalidArgument('You need at least one identity parameter');
+        }
+
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event";
 
-        $data['json'] = array_merge([
+        $data['json'] = array_merge($params, $identityParams, [
+            'id' => $id,
             'eventTypeId' => $eventTypeId,
-            'id'          => $id,
-            'objectId'    => $objectId,
-            'email'       => $email,
-            'utk'         => $utk,
-            'extraData'   => $extraData,
-            'timestamp'   => $this->timestamp($timestamp),
-        ], $eventTypeData);
+        ]);
 
         return $this->client->request('put', $endpoint, $data);
     }
@@ -57,7 +57,7 @@ class Timeline extends Resource
      *
      * @see https://developers.hubspot.com/docs/methods/timeline/batch-create-or-update-events
      */
-    public function createOrUpdateBatch($appId,$events=[])
+    public function createOrUpdateBatch($appId, $events=[])
     {
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event/batch";
 
@@ -78,6 +78,7 @@ class Timeline extends Resource
     public function getEventTypes($appId)
     {
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event-types";
+
         return $this->client->request('get', $endpoint);
     }
 
@@ -162,6 +163,7 @@ class Timeline extends Resource
     public function deleteEventType($appId, $eventTypeId)
     {
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event-types/{$eventTypeId}";
+
         return $this->client->request('delete', $endpoint);
     }
 
@@ -178,6 +180,7 @@ class Timeline extends Resource
     public function getEventTypeProperties($appId, $eventTypeId)
     {
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event-types/{$eventTypeId}/properties";
+
         return $this->client->request('get', $endpoint);
     }
 
@@ -272,6 +275,7 @@ class Timeline extends Resource
     public function deleteEventTypeProperty($appId, $eventTypeId, $eventTypePropertyId)
     {
         $endpoint = "https://api.hubapi.com/integrations/v1/{$appId}/timeline/event-types/{$eventTypeId}/properties/{$eventTypePropertyId}";
+
         return $this->client->request('delete', $endpoint);
     }
 }
