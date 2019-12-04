@@ -41,6 +41,7 @@ use SevenShores\Hubspot\Http\Client;
  * @method \SevenShores\Hubspot\Resources\EcommerceBridge   ecommerceBridge()
  * @method \SevenShores\Hubspot\Resources\Webhooks          webhooks()
  * @method \SevenShores\Hubspot\Resources\OAuth2            oAuth2()
+ * @method \SevenShores\Hubspot\Resources\Products          products()
  */
 class Factory
 {
