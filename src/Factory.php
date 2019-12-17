@@ -42,6 +42,7 @@ use SevenShores\Hubspot\Http\Client;
  * @method \SevenShores\Hubspot\Resources\Webhooks          webhooks()
  * @method \SevenShores\Hubspot\Resources\OAuth2            oAuth2()
  * @method \SevenShores\Hubspot\Resources\Products          products()
+ * @method \SevenShores\Hubspot\Resources\LineItems         lineItems()
  */
 class Factory
 {
